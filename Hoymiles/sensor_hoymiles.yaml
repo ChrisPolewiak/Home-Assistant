@@ -1,0 +1,94 @@
+- platform: command_line
+  command: "/usr/bin/curl --http0.9 -o - http://DTU_IP/hometable.xml -s | python3 /config/python_scripts/hoymiles_dtu_stats.py"
+  name: pv_stats
+  value_template: "{{ value_json.current_power_total }}"
+  json_attributes:
+    - current_power_phase1
+    - current_power_phase2
+    - current_power_phase3
+    - current_power_total
+    - co2_saved
+    - energy_today
+    - panels_online
+    - grid_temperature
+    - grid_power
+  scan_interval: 30
+
+- platform: template
+  sensors:
+    pv_current_power_phase1:
+      friendly_name: "Current Power Phase 1"
+      value_template: >-
+        {{ states.sensor.pv_stats.attributes['current_power_phase1'] }}
+      unit_of_measurement: "kW"
+      icon_template: "mdi:solar-power"
+
+- platform: template
+  sensors:
+    pv_current_power_phase2:
+      friendly_name: "Current Power Phase 2"
+      value_template: >-
+        {{ states.sensor.pv_stats.attributes['current_power_phase2'] }}
+      unit_of_measurement: "kW"
+      icon_template: "mdi:solar-power"
+
+- platform: template
+  sensors:
+    pv_current_power_phase3:
+      friendly_name: "Current Power Phase 3"
+      value_template: >-
+        {{ states.sensor.pv_stats.attributes['current_power_phase3'] }}
+      unit_of_measurement: "kW"
+      icon_template: "mdi:solar-power"
+
+- platform: template
+  sensors:
+    pv_current_power_total:
+      friendly_name: "Current Power"
+      value_template: >-
+        {{ states.sensor.pv_stats.attributes['current_power_total'] }}
+      unit_of_measurement: "kW"
+      icon_template: "mdi:solar-power"
+
+- platform: template
+  sensors:
+    pv_co2_saved:
+      friendly_name: "CO2 Saved"
+      value_template: >-
+        {{ states.sensor.pv_stats.attributes.co2_saved }}
+      unit_of_measurement: "kg"
+      icon_template: "mdi:molecule-co2"
+
+- platform: template
+  sensors:
+    pv_energy_today:
+      friendly_name: "Energy Today"
+      value_template: >-
+        {{ states.sensor.pv_stats.attributes.energy_today }}
+      unit_of_measurement: "kWh"
+      icon_template: "mdi:power-settings"
+
+- platform: template
+  sensors:
+    pv_panels_online:
+      friendly_name: "Panels Online"
+      value_template: >-
+        {{ states.sensor.pv_stats.attributes.panels_online }}
+      icon_template: "mdi:view-comfy-outline"
+
+- platform: template
+  sensors:
+    pv_grid_power_panel_1_1:
+      friendly_name: "Grid Power panel_1-1"
+      value_template: >-
+        {{ states.sensor.pv_stats.attributes.grid_power['panel_1-1'] }}
+      unit_of_measurement: "W"
+      icon_template: "mdi:solar-power"
+
+- platform: template
+  sensors:
+    pv_grid_temperature_panel_1_1:
+      friendly_name: "Grid Temperature panel_1-1"
+      value_template: >-
+        {{ states.sensor.pv_stats.attributes.grid_temperature['panel_1-1'] }}
+      device_class: temperature
