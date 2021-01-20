@@ -1,0 +1,287 @@
+# Automation triggered everytime, when any window or door was opened for more than 5 minutes
+# The goal is to shot down selected valves. This is accomplished with Python script
+
+alias: Heating - Valve close after window/door open
+trigger:
+  - type: opened
+    platform: device
+    device_id: c3d2195e99e7bf4963068550736d99de
+    entity_id: binary_sensor.0x00158d00052d5403_contact
+    domain: binary_sensor
+    for:
+      hours: 0
+      minutes: 5
+      seconds: 0
+  - type: opened
+    platform: device
+    device_id: 022e24260a6a28d982cc23b6dfe22c8a
+    entity_id: binary_sensor.0x00158d00024243bc_contact
+    domain: binary_sensor
+    for:
+      hours: 0
+      minutes: 5
+      seconds: 0
+  - type: opened
+    platform: device
+    device_id: f88dd8ea072b3e0600ded83fc0034b30
+    entity_id: binary_sensor.0x00158d000275010d_contact
+    domain: binary_sensor
+    for:
+      hours: 0
+      minutes: 5
+      seconds: 0
+  - type: opened
+    platform: device
+    device_id: a3de42050c531c9f961e4651ec973c13
+    entity_id: binary_sensor.0x00158d00027b25bb_contact
+    domain: binary_sensor
+    for:
+      hours: 0
+      minutes: 5
+      seconds: 0
+  - type: opened
+    platform: device
+    device_id: 472a437937a2ee5b3ecbae29b9d29917
+    entity_id: binary_sensor.0x00158d000309ecbe_contact
+    domain: binary_sensor
+    for:
+      hours: 0
+      minutes: 5
+      seconds: 0
+  - type: opened
+    platform: device
+    device_id: a1584e64d8c811ade1add5ff9b236d7d
+    entity_id: binary_sensor.0x00158d0001c0a478_contact
+    domain: binary_sensor
+    for:
+      hours: 0
+      minutes: 5
+      seconds: 0
+  - type: not_opened
+    platform: device
+    device_id: 2fc0034c3896a53a60ff438226fd71ed
+    entity_id: binary_sensor.0x00158d00045b06e5_contact
+    domain: binary_sensor
+    for:
+      hours: 0
+      minutes: 5
+      seconds: 0
+  - type: opened
+    platform: device
+    device_id: 6113ed88d90b3fbbc6c7fa64d3db1d72
+    entity_id: binary_sensor.0x00158d0003139ee6_contact
+    domain: binary_sensor
+    for:
+      hours: 0
+      minutes: 5
+      seconds: 0
+  - type: opened
+    platform: device
+    device_id: c8e7f587f75131fa2b441a0d7cb01079
+    entity_id: binary_sensor.0x00158d000319a65f_contact
+    domain: binary_sensor
+    for:
+      hours: 0
+      minutes: 5
+      seconds: 0
+  - type: opened
+    platform: device
+    device_id: eb78944e94d8c89194f08bece79755f8
+    entity_id: binary_sensor.0x00158d00024243a3_contact
+    domain: binary_sensor
+    for:
+      hours: 0
+      minutes: 10
+      seconds: 0
+  - type: opened
+    platform: device
+    device_id: cea799a8eaf60c6acdf4bb82acbb9a58
+    entity_id: binary_sensor.0x00158d00053fd96e_contact
+    domain: binary_sensor
+    for:
+      hours: 0
+      minutes: 5
+      seconds: 0
+  - type: opened
+    platform: device
+    device_id: b840e0c0b822794201c4a4f6738f86c5
+    entity_id: binary_sensor.0x00158d00053fda8f_contact
+    domain: binary_sensor
+    for:
+      hours: 0
+      minutes: 5
+      seconds: 0
+  - type: opened
+    platform: device
+    device_id: 08404021b4c06db18888f228d1433ad8
+    entity_id: binary_sensor.0x00158d00053fdc4e_contact
+    domain: binary_sensor
+    for:
+      hours: 0
+      minutes: 5
+      seconds: 0
+  - type: opened
+    platform: device
+    device_id: 383f95bd74a5b2b5c51c9fbf704c5046
+    entity_id: binary_sensor.0x00158d00054dad6e_contact
+    domain: binary_sensor
+    for:
+      hours: 0
+      minutes: 5
+      seconds: 0
+condition: []
+action:
+  - service: python_script.window_trigger4heating
+    data: {}
+mode: single
+
+# Automation triggered everytime, when any window or door was closed in the last 5 seconds
+# The goal is to reopen valves (if needed). This is accomplished with Python script
+
+alias: Heating - Valve reopen after window/door close
+trigger:
+  - type: not_opened
+    platform: device
+    device_id: c3d2195e99e7bf4963068550736d99de
+    entity_id: binary_sensor.0x00158d00052d5403_contact
+    domain: binary_sensor
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 5
+  - type: not_opened
+    platform: device
+    device_id: 022e24260a6a28d982cc23b6dfe22c8a
+    entity_id: binary_sensor.0x00158d00024243bc_contact
+    domain: binary_sensor
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 5
+  - type: not_opened
+    platform: device
+    device_id: f88dd8ea072b3e0600ded83fc0034b30
+    entity_id: binary_sensor.0x00158d000275010d_contact
+    domain: binary_sensor
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 5
+  - type: not_opened
+    platform: device
+    device_id: a3de42050c531c9f961e4651ec973c13
+    entity_id: binary_sensor.0x00158d00027b25bb_contact
+    domain: binary_sensor
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 5
+  - type: not_opened
+    platform: device
+    device_id: 472a437937a2ee5b3ecbae29b9d29917
+    entity_id: binary_sensor.0x00158d000309ecbe_contact
+    domain: binary_sensor
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 5
+  - type: not_opened
+    platform: device
+    device_id: a1584e64d8c811ade1add5ff9b236d7d
+    entity_id: binary_sensor.0x00158d0001c0a478_contact
+    domain: binary_sensor
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 5
+  - type: not_opened
+    platform: device
+    device_id: 2fc0034c3896a53a60ff438226fd71ed
+    entity_id: binary_sensor.0x00158d00045b06e5_contact
+    domain: binary_sensor
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 5
+  - type: not_opened
+    platform: device
+    device_id: 6113ed88d90b3fbbc6c7fa64d3db1d72
+    entity_id: binary_sensor.0x00158d0003139ee6_contact
+    domain: binary_sensor
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 5
+  - type: not_opened
+    platform: device
+    device_id: c8e7f587f75131fa2b441a0d7cb01079
+    entity_id: binary_sensor.0x00158d000319a65f_contact
+    domain: binary_sensor
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 5
+  - type: not_opened
+    platform: device
+    device_id: eb78944e94d8c89194f08bece79755f8
+    entity_id: binary_sensor.0x00158d00024243a3_contact
+    domain: binary_sensor
+    for:
+      hours: 0
+      minutes: 1
+      seconds: 0
+  - type: not_opened
+    platform: device
+    device_id: cea799a8eaf60c6acdf4bb82acbb9a58
+    entity_id: binary_sensor.0x00158d00053fd96e_contact
+    domain: binary_sensor
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 5
+  - type: not_opened
+    platform: device
+    device_id: b840e0c0b822794201c4a4f6738f86c5
+    entity_id: binary_sensor.0x00158d00053fda8f_contact
+    domain: binary_sensor
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 5
+  - type: not_opened
+    platform: device
+    device_id: 08404021b4c06db18888f228d1433ad8
+    entity_id: binary_sensor.0x00158d00053fdc4e_contact
+    domain: binary_sensor
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 5
+  - type: not_opened
+    platform: device
+    device_id: 383f95bd74a5b2b5c51c9fbf704c5046
+    entity_id: binary_sensor.0x00158d00054dad6e_contact
+    domain: binary_sensor
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 5
+condition: []
+action:
+  - service: python_script.window_trigger4heating
+    data: {}
+mode: single
+
+# Automation triggered each 5 minutes
+# Python script checks amount of valves opened to turn on or turn off furnace
+
+alias: Heating - furnace control
+trigger:
+  - platform: time_pattern
+    minutes: /5
+    seconds: '40'
+condition: []
+action:
+  - service: python_script.climate_control
+mode: single
+max: 10
