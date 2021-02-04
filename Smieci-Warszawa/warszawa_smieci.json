@@ -1,0 +1,69 @@
+- platform: command_line
+  command: "python3 /config/python_scripts/warszawa_smieci.py 'Œwiêtokrzyska 1, Œródmieœcie"
+  name: warszawa_smieci
+  value_template: ""
+  json_attributes:
+    - BIO
+    - TWORZYWA
+    - PAPIER
+    - SZKLO
+    - ZIELONE
+    - WIELKOGABARYTOWE
+    - ZMIESZANE
+  scan_interval: 240
+
+- platform: template
+  sensors:
+    warszawa_smieci_bio:
+      friendly_name: "Bio"
+      value_template: >-
+        {{ states.sensor.warszawa_smieci.attributes['BIO'] }}
+      icon_template: "mdi:trash-can"
+
+- platform: template
+  sensors:
+    warszawa_smieci_tworzywa:
+      friendly_name: "Tworzywa"
+      value_template: >-
+        {{ states.sensor.warszawa_smieci.attributes['TWORZYWA'] }}
+      icon_template: "mdi:trash-can"
+
+- platform: template
+  sensors:
+    warszawa_smieci_papier:
+      friendly_name: "Papier"
+      value_template: >-
+        {{ states.sensor.warszawa_smieci.attributes['PAPIER'] }}
+      icon_template: "mdi:trash-can"
+
+- platform: template
+  sensors:
+    warszawa_smieci_szklo:
+      friendly_name: "Szk³o"
+      value_template: >-
+        {{ states.sensor.warszawa_smieci.attributes['SZKLO'] }}
+      icon_template: "mdi:trash-can"
+
+- platform: template
+  sensors:
+    warszawa_smieci_zielone:
+      friendly_name: "Zielone"
+      value_template: >-
+        {{ states.sensor.warszawa_smieci.attributes['ZIELONE'] }}
+      icon_template: "mdi:trash-can"
+
+- platform: template
+  sensors:
+    warszawa_smieci_gabarytowe:
+      friendly_name: "Gabarytowe"
+      value_template: >-
+        {{ states.sensor.warszawa_smieci.attributes['WIELKOGABARYTOWE'] }}
+      icon_template: "mdi:trash-can"
+
+- platform: template
+  sensors:
+    warszawa_smieci_zmieszane:
+      friendly_name: "Zmieszane"
+      value_template: >-
+        {{ states.sensor.warszawa_smieci.attributes['ZMIESZANE'] }}
+      icon_template: "mdi:trash-can"
