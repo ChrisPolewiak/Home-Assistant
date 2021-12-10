@@ -1,5 +1,5 @@
 - platform: command_line
-  command: "python3 /config/python_scripts/warszawa_smieci.py 'Œwiêtokrzyska 1, Œródmieœcie"
+  command: "python3 /config/python_scripts/warszawa_smieci.py 'Å’wiÃªtokrzyska 1, Å’rÃ³dmieÅ“cie"
   name: warszawa_smieci
   value_template: ""
   json_attributes:
@@ -39,7 +39,7 @@
 - platform: template
   sensors:
     warszawa_smieci_szklo:
-      friendly_name: "Szk³o"
+      friendly_name: "SzkÂ³o"
       value_template: >-
         {{ states.sensor.warszawa_smieci.attributes['SZKLO'] }}
       icon_template: "mdi:trash-can"
@@ -67,3 +67,4 @@
       value_template: >-
         {{ states.sensor.warszawa_smieci.attributes['ZMIESZANE'] }}
       icon_template: "mdi:trash-can"
+
